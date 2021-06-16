@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Primer Proyecto en Rails</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="is-preloaded">
+    <div id="wrapper">
+      <header id="header">
+        <div class="inner"> 
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+   
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li> <%= link_to "index", pages_index_path %> </li>
+          <li>  <%= link_to "about", pages_about_url %> </li>
+          <li> <%= link_to "Ruby On Rails", pages_team_path %> </li>
+        </ul>
+      </nav>
+    <% # A la hora de generar links internos es mejor ocupar _path, ya que no necesitamos saber cual es el dominio del sitio en el que estamos navegando. Pero si necesitamos incluir el dominio como por ejemplo, cuando se envía un link de cambio de contraseña, entonces en ese caso debemos usar el sufijo _url. En la gran mayoría de los casos simplemente ocuparemos _path y señalaremos cuando haya que ocupar _url %>
+
+    <!-- Main -->
+  <div id="main">
+    <div class="inner">
+      <%= yield %>
+    </div>
+  </div>
+ 
+  <!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+  <ul class="copyright">
+  <li>
+    ©Copyright <%= Time.now.year %>
+ <% if Time.now.year >= 2020 %>
+<h3>Version 2.0</h3>
+<% else %>
+<h3>Version 1.0</h3>
+<% end %> </li>
+  </li><li>Iván Carrasco <a
+  href="https://alexcct107.github.io/aztlan_portfolio/">Estudios Aztlán</a></li>
+  </ul>
+  </div>
+  </footer>
+  </div>
+
+  </body>
+  <%= javascript_include_tag 'application' %>
+</html>
